@@ -1,0 +1,277 @@
+/*body {*/
+/*  background-color: #343a40;*/
+/*  color: #f8f9fa;*/
+/*}*/
+
+/*a, .text-light {*/
+/*  color: #f8f9fa;*/
+/*}*/
+
+/*.navbar, .footer {*/
+/*  background-color: #212529;*/
+/*}*/
+
+/*.promo{*/
+/*    background: -webkit-linear-gradient(90deg, #0061fe,#000000);*/
+/*    background: linear-gradient(90deg, #0061fe,#000000);*/
+/*    min-height: 120px;*/
+/*    padding: 25px 0;*/
+/*    border-radius: -20%;*/
+/*}*/
+
+/*.title_sempai {*/
+/*    color: #f8f9fa;*/
+/*    font-size: 40px;*/
+/*    margin-top: 10px;*/
+/*    padding-left: 42px;*/
+/*}*/
+
+/*.nav{*/
+/*    margin-top: 10px;*/
+/*    display: flex;*/
+/*    align-items: center;*/
+/*    justify-content: center;*/
+/*}*/
+
+/*.nav_item > a{*/
+/*    color: #ffffff;*/
+/*    font-weight: 600;*/
+/*    font-size: 18px;*/
+/*}*/
+
+/*.nav_item_margin-none{*/
+/*    margin-right: 0;*/
+/*}*/
+
+/*.nav_item:hover{*/
+/*    opacity: 1;*/
+/*}*/
+
+/*.nav_list{*/
+/*    display: flex;*/
+/*    list-style: none;*/
+/*    padding: 0;*/
+/*    margin: 0;*/
+/*    align-items: center;*/
+/*}*/
+
+/*.nav_item{*/
+/*    margin: 0 45px;*/
+/*    opacity: 0.85;*/
+/*    transition: opacity 0.3s ease;*/
+/*    align-items: center;*/
+/*}*/
+
+/*a:hover {*/
+/*    text-decoration: none;*/
+/*}*/
+
+/*a{*/
+/*    text-decoration: none;*/
+/*}*/
+
+/* Общие стили */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+/* Шапка */
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 0;
+    text-align: center;
+}
+
+header nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
+
+header nav ul li {
+    margin: 0 15px;
+}
+
+header nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+header nav ul li a:hover {
+    text-decoration: underline;
+}
+
+/* Основной контент */
+main {
+    padding: 20px;
+    text-align: center;
+}
+
+.description {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.description h1 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+.description p {
+    font-size: 1.2em;
+    line-height: 1.6;
+}
+
+/*.img_anime {*/
+/*    width: 150px;*/
+/*    height: 210px;*/
+/*    margin: 0 auto;*/
+/*}*/
+
+/* Основные стили для карточки */
+.anime-card {
+    border: 1px solid #ddd; /* Граница карточки */
+    border-radius: 8px; /* Скругление углов */
+    overflow: hidden; /* Скрываем всё, что выходит за пределы карточки */
+    margin: 10px; /* Отступы между карточками */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Тень для карточки */
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out; /* Плавные анимации */
+    background-color: #fff; /* Белый фон */
+    width: 100% !important; /* Ширина карточки */
+    max-width: 732px; /* Максимальная ширина карточки */
+}
+
+.anime-card:hover {
+    transform: translateY(-5px); /* Поднимаем карточку при наведении */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Увеличиваем тень при наведении */
+}
+
+.img_anime {
+    width: 100%; /* Ширина изображения на всю карточку */
+    height: 250px; /* Фиксированная высота изображения */
+    object-fit: cover; /* Обрезаем изображение, чтобы оно заполнило область */
+}
+
+.anime-info {
+    padding: 15px; /* Внутренние отступы для текста */
+}
+
+.anime-info h3 {
+    margin: 0 0 10px; /* Отступ снизу для заголовка */
+    font-size: 1.5em; /* Размер шрифта заголовка */
+    color: #333; /* Цвет заголовка */
+}
+
+.meta-info {
+    font-size: 0.9em; /* Размер шрифта мета-информации */
+    color: #666; /* Цвет мета-информации */
+    margin: 0 0 10px; /* Отступ снизу */
+}
+
+.description-text {
+    font-size: 0.9em; /* Размер шрифта описания */
+    color: #444; /* Цвет текста описания */
+    line-height: 1.4; /* Межстрочный интервал */
+}
+
+
+/* Основные стили для карточки аниме */
+.anime-detail {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.anime-detail__container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.anime-detail__title {
+    font-size: 2.5rem;
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.anime-detail__content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.anime-detail__poster {
+    flex: 1 1 300px;
+}
+
+.anime-detail__image {
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.anime-detail__info {
+    flex: 2 1 400px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.anime-detail__info-item {
+    font-size: 1.1rem;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+.anime-detail__info-item strong {
+    color: #333;
+}
+
+.anime-detail__description {
+    margin-top: 20px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.anime-detail__description-title {
+    font-size: 1.8rem;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.anime-detail__description-text {
+    font-size: 1.1rem;
+    color: #555;
+    line-height: 1.6;
+}
+
+
+
+
+
+/* Подвал */
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}

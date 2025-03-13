@@ -1,0 +1,83 @@
+{% extends 'app/base.html' %}
+{% load static %}
+
+{#{% block content %}#}
+{#    <section class="description2">#}
+{#    <h2>{{ anime.name }}</h2>#}
+{#        <img src="{{ anime.image.url }}" alt="{{ anime.name }}">#}
+{#        <p>Студия: {{ anime.study }}</p>#}
+{#        <p>Год выхода: {{ anime.year }}</p>#}
+{#        <p>Жанр: {{ anime.genre }}</p>#}
+{#        <p>MPAA Рейтинг: {{ anime.mpaa }}</p>#}
+{#        <p>Озвучка: {{ anime.voice }}</p>#}
+{#        <p>Возрастное ограничение: {{ anime.age_limit }}</p>#}
+{#        <p>Длительность серии: {{ anime.lang }}</p>#}
+{#    <p>{{ anime.description }}</p>#}
+{#    </section>#}
+{#{% endblock %}#}
+
+
+{% block content %}
+    <section class="anime-detail">
+        <div class="anime-detail__container">
+            <!-- Заголовок аниме -->
+            <h1 class="anime-detail__title">{{ anime.name }}</h1>
+
+            <div class="anime-detail__content">
+                <!-- Постер аниме -->
+                <div class="anime-detail__poster">
+                    <img src="{{ anime.image.url }}" alt="{{ anime.name }}" class="anime-detail__image">
+                </div>
+
+                <!-- Информация об аниме -->
+                <div class="anime-detail__info">
+                    <p class="anime-detail__info-item"><strong>Студия:</strong> {{ anime.study }}</p>
+                    <p class="anime-detail__info-item"><strong>Год выхода:</strong> {{ anime.release_date }}</p>
+                    <p class="anime-detail__info-item"><strong>Жанр:</strong> {{ anime.genre }}</p>
+                    <p class="anime-detail__info-item"><strong>MPAA Рейтинг:</strong> {{ anime.mpaa }}</p>
+                    <p class="anime-detail__info-item"><strong>Озвучка:</strong> {{ anime.study }}</p>
+                    <p class="anime-detail__info-item"><strong>Возрастное ограничение:</strong> {{ anime.age_limit }}</p>
+                    <p class="anime-detail__info-item"><strong>Длительность серии:</strong> {{ anime.lang }}</p>
+                </div>
+            </div>
+
+            <!-- Описание аниме -->
+            <div class="anime-detail__description">
+                <h2 class="anime-detail__description-title">Описание</h2>
+                <p class="anime-detail__description-text">{{ anime.description }}</p>
+            </div>
+        </div>
+    </section>
+    <section class="show_video_dark">
+    {% for i in anime_titles %}
+        <p>{{ anime_titles }}</p>
+        {% endfor %}
+        <h1>Смотреть аниме "{{ anime.name }}" онлайн</h1>
+
+        {% if episodes %}
+           {% with first_episode=episodes.first %}
+            <video width="400" controls>
+            <source src="{{ first_episode.vidio_file.url }}" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+            {% endwith %}
+        {% endif %}
+{#        <video width="400" controls>#}
+{#            <source src="{{ anime.vidio_file.url }}" type="video/mp4">#}
+{#            Your browser does not support the video tag.#}
+{#        </video>#}
+    </section>
+
+
+
+{#    <h2>Episodes:</h2>#}
+{#<ul>#}
+{#    {% for episode in episodes %}#}
+{#                <p>Episode {{ episode.name }} : {{ episode.episode_numer }}</p>#}
+{#        <video width="400" controls>#}
+{#            <source src="{{ episode.vidio_file.url }}" type="video/mp4">#}
+{#            Your browser does not support the video tag.#}
+{#        </video>#}
+{#    {% endfor %}#}
+{#</ul>#}
+{% endblock %}

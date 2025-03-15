@@ -262,7 +262,99 @@ main {
 }
 
 
+/* Основные стили для контейнера с видео */
+/* Основные стили для контейнера с видео */
+    .show_video_dark {
+        background-color: #1a1a1a;
+        padding: 20px;
+        border-radius: 10px;
+        color: #ffffff;
+        text-align: center; /* Центрирование текста */
+    }
 
+    .show_video_dark h1 {
+        font-size: 24px;
+        margin-bottom: 20px;
+        color: #ffffff;
+    }
+
+    .show_video_dark video {
+        margin-bottom: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        display: block; /* Делаем видео блочным элементом */
+        margin-left: auto; /* Центрирование по горизонтали */
+        margin-right: auto; /* Центрирование по горизонтали */
+    }
+
+    /* Стили для пагинации */
+    .pagination {
+        margin-top: 30px;
+        display: flex;
+        justify-content: center; /* Центрирование пагинации */
+    }
+
+    .pagination .page-item {
+        margin: 0 5px;
+    }
+
+    .pagination .page-link {
+        color: #ffffff;
+        background-color: #2a2a2a;
+        border: 1px solid #444;
+        border-radius: 5px;
+        padding: 8px 16px;
+        transition: all 0.3s ease;
+    }
+
+    .pagination .page-link:hover {
+        background-color: #ffffff;
+        color: #2a2a2a; /* Изменение цвета текста при наведении */
+        border-color: #ffffff;
+    }
+
+    .pagination .page-item.disabled .page-link {
+        color: #666;
+        background-color: #2a2a2a;
+        border-color: #444;
+    }
+
+    .pagination .page-item.active .page-link {
+        background-color: #ffffff;
+        color: #2a2a2a; /* Цвет текста для активной кнопки */
+        border-color: #ffffff;
+    }
+
+    /* Тень для пагинации */
+    .custom-shadow {
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        border-radius: 10px;
+        padding: 10px;
+        background-color: #2a2a2a;
+    }
+
+    /* Стили для списка аниме */
+    .show_video_dark p {
+        font-size: 18px;
+        color: #ffffff;
+        margin-bottom: 10px;
+    }
+
+    /* Адаптивные стили */
+    @media (max-width: 981px) {
+        .show_video_dark h1 {
+            font-size: 20px;
+        }
+
+        .show_video_dark video {
+            width: 100%;
+        }
+
+        .pagination .page-link {
+            padding: 6px 12px;
+            font-size: 14px;
+        }
+    }
 
 
 /* Подвал */

@@ -74,43 +74,50 @@
 
 
         <div class="show_video_dark">
-        {% for i in anime_titles %}
-            <p>{{ anime_titles }}</p>
-        {% endfor %}
-        <h1>Смотреть аниме "{{ anime.name }}" онлайн</h1>
-        {% for ep in episodes %}
+    {% for i in anime_titles %}
+        <p>{{ anime_titles }}</p>
+    {% endfor %}
+    <h1>Смотреть аниме "{{ anime.name }}" онлайн</h1>
+    {% for ep in episodes %}
+        <div class="video-container">
             <video width="981" height="551" controls>
                 <source src="{{ ep.vidio_file.url }}" type="video/mp4">
             </video>
-        {% endfor %}
+            <div class="episode-info">
+                <p class="episode-name">Название: {{ ep.name }}</p>
+                <p class="episode-date">Дата выхода: {{ ep.release_date }}</p>
+            </div>
+        </div>
+    {% endfor %}
 
-        <!-- Пагинация внутри темного блока -->
-        <nav aria-label="Page navigation example">
-            <ul class="pagination justify-content-center my-4">
-                <div class="custom-shadow d-flex">
-                    <li class="page-item {% if not episodes.has_previous %}disabled{% endif %}">
-                        <a class="page-link" href="
-                            {% if episodes.has_previous %}
-                                {% url 'animes:anime_episode' slug_url episodes.previous_page_number %}
-                            {% else %}
-                                #
-                            {% endif %}"><<</a>
-                    </li>
-                    {% for page in episodes.paginator.page_range %}
-                        <li class="page-item"><a class="page-link" href="{% url 'animes:anime_episode' slug_url page %}">{{ page }}</a></li>
-                    {% endfor %}
-                    <li class="page-item {% if not episodes.has_next %}disabled{% endif %}">
-                        <a class="page-link" href="
-                            {% if episodes.has_next %}
-                                {% url 'animes:anime_episode' slug_url episodes.next_page_number %}
-                            {% else %}
-                                #
-                            {% endif %}">>></a>
-                    </li>
-                </div>
-            </ul>
-        </nav>
-    </div>
+    <!-- Пагинация внутри блока -->
+    <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center my-4">
+            <div class="custom-shadow d-flex">
+                <li class="page-item {% if not episodes.has_previous %}disabled{% endif %}">
+                    <a class="page-link" href="
+                        {% if episodes.has_previous %}
+                            {% url 'animes:anime_episode' slug_url episodes.previous_page_number %}
+                        {% else %}
+                            #
+                        {% endif %}"><<</a>
+                </li>
+                {% for page in episodes.paginator.page_range %}
+                    <li class="page-item"><a class="page-link" href="{% url 'animes:anime_episode' slug_url page %}">{{ page }}</a></li>
+                {% endfor %}
+                <li class="page-item {% if not episodes.has_next %}disabled{% endif %}">
+                    <a class="page-link" href="
+                        {% if episodes.has_next %}
+                            {% url 'animes:anime_episode' slug_url episodes.next_page_number %}
+                        {% else %}
+                            #
+                        {% endif %}">>></a>
+                </li>
+            </div>
+        </ul>
+    </nav>
+</div>
+
 
 
 {#    <h2>Episodes:</h2>#}

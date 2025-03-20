@@ -23,6 +23,7 @@ from django.conf import settings
 urlpatterns = [
     path('', include('app.urls', namespace='sempai')),
     path('show_anime/', include('animes.urls', namespace='anime')),
+    path('read_manga/', include('manga.urls', namespace='manga')),
     path('admin/', admin.site.urls),
 ]
 

@@ -12,7 +12,6 @@
             <ul>
                 <li class="nav_item"><a href="{% url 'animes:anime' %}">Аниме</a></li>
                 <li class="nav_item"><a href="">Манга</a></li>
-                <li class="nav_item"><a href="">Топ 100</a></li>
                 <li class="nav_item"><a href="">Случайное аниме</a></li>
                 <li class="nav_item"><a href="{% url 'sempai:index' %}">Главная</a></li>
                 <li class="nav_item"><a href="">Войти</a></li>
@@ -30,16 +29,31 @@
     </main>
     <br>
     <section class="description">
-        <h2 class="title_top">Аниме сезона</h2>
+    <h2 class="title_top">Аниме сезона</h2>
     <div class="anime-season-container">
-    {% for anime in anime_titles %}
-        <div class="anime-card">
-            <div class="anime-image">
-                <img src="{{ anime.image.url }}" alt="{{ anime.name }}">
+        {% for anime in anime_titles %}
+            <div class="anime-card">
+                <div class="anime-image">
+                    <img src="{{ anime.image.url }}" alt="{{ anime.name }}">
+                </div>
+                <p class="anime-name"><a href="{% url 'animes:anime_show' anime.slug %}">{{ anime.name }}</a></p>
             </div>
-            <p class="anime-name">{{ anime.name }}</p>
-        </div>
-    {% endfor %}
+        {% endfor %}
+    </div>
+</section>
+    <br>
+
+<section class="description">
+    <h2 class="title_top">Новые Аниме</h2>
+    <div>
+        {% for anime in new_anime_titles %}
+            <div class="anime-card">
+                <div class="anime-image">
+                    <img src="{{ anime.image.url }}" alt="{{ anime.name }}">
+                </div>
+                <p class="anime-name"><a href="{% url 'animes:anime_show' anime.slug %}">{{ anime.name }}</a></p>
+            </div>
+        {% endfor %}
     </div>
     </section>
 {% endblock %}

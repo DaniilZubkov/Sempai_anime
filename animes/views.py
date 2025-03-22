@@ -5,6 +5,8 @@ from django.core.paginator import Paginator
 from django.template.loader import render_to_string
 from django.http import JsonResponse
 
+import random
+from django.core.cache import cache
 
 def anime(request):
     anime_titles = Anime.objects.all()
@@ -36,3 +38,10 @@ def single_anime_detail(request, anime_slug, page=1):
     return render(request, 'animes/single_anime_title.html', context)
 
 
+
+def random_anime(request):
+    random_anime = cache.get('random_anime')
+    if not random_anime:
+        random_anime = Anime.objects.order_by('?').first()
+        cache.set('random_anime', random_anime, 300)  # Кэш на 5 минут
+    return {'random_anime': random_anime}

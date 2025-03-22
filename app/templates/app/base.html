@@ -12,7 +12,10 @@
             <ul>
                 <li class="nav_item"><a href="{% url 'animes:anime' %}">Аниме</a></li>
                 <li class="nav_item"><a href="">Манга</a></li>
-                <li class="nav_item"><a href="">Случайное аниме</a></li>
+{#                <a href="{% url 'animes:anime_show' random_anime.slug %}">{{ random_anime }}</a>#}
+                <li class="nav_item"><a href="{% url 'animes:anime_show' random_anime.slug %}">Случайное аниме</a></li>
+{#                <p>Slug: {{ random_anime.slug }}</p>#}
+{#                <p>Name: {{ random_anime.name }}</p>#}
                 <li class="nav_item"><a href="{% url 'sempai:index' %}">Главная</a></li>
                 <li class="nav_item"><a href="">Войти</a></li>
             </ul>
@@ -54,6 +57,19 @@
                 <p class="anime-name"><a href="{% url 'animes:anime_show' anime.slug %}">{{ anime.name }}</a></p>
             </div>
         {% endfor %}
+    </div>
+    </section>
+
+    {#  TEST  #}
+    <section class="description">
+    <h2 class="title_top">Рандомное Аниме</h2>
+    <div>
+            <div class="anime-card">
+                <div class="anime-image">
+                    <img src="{{ random_anime.image.url }}" alt="{{ random_anime.name }}">
+                </div>
+                <p class="anime-name"><a href="{% url 'animes:anime_show' random_anime.slug %}">{{ random_anime.name }}</a></p>
+            </div>
     </div>
     </section>
 {% endblock %}

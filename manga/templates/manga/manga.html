@@ -1,0 +1,12 @@
+{% extends 'app/base.html' %}
+{% load static %}
+
+{% block content %}
+    {% for manga in manga_list %}
+        <h2>{{ manga.name }}</h2>
+        <p>Описание: {{ manga.description }}</p>
+        <p>Genre: {{ manga.study }}</p>
+        <p>Year: {{ manga.release_date }}</p>
+        <hr>
+    {% endfor %}
+{% endblock %}

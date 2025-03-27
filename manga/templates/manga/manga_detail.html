@@ -1,0 +1,22 @@
+{% extends 'app/base.html' %}
+{% load static %}
+
+
+{% block content %}
+<div class="manga-container">
+    <h1>{{ manga.name }}</h1>
+    <img src="{{ manga.image_poster.url }}" alt="{{ manga.name }}" width="200">
+
+    <div class="chapters-list">
+        <h2>Главы:</h2>
+{#        {% for capitel in all_capitels %}#}
+{#            <p><a href="{% url 'manga:capitel_detail' manga_slug=manga.slug capitel_slug=capitel.slug %}">{{ capitel.captel_number }}</a></p>#}
+{#        {% endfor %}#}
+
+        <h2>Томы:</h2>
+        {% for tom in toms %}
+            <p><a href="{% url 'manga:tom_detail' manga_slug=manga.slug tom_slug=tom.slug %}">{{ tom.tom_number }}</a></p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

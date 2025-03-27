@@ -1,0 +1,10 @@
+{% extends 'app/base.html' %}
+{% load static %}
+
+{% block content %}
+    <h2>{{ tom.name }} : {{ tom.tom_number }} Том</h2>
+    {% for capitel in capitels %}
+        <p><a href="{% url 'manga:capitel_detail'  tom.slug capitel.slug %}">{{ capitel.name }}</a></p>
+    {% endfor %}
+
+{% endblock %}

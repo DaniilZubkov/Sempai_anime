@@ -1,7 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.core.files.storage import FileSystemStorage
 import os
 from django.views.generic import CreateView, DetailView
+from django.core.paginator import Paginator
 from .models import Manga, Capitel, Tom
 
 
@@ -13,6 +14,8 @@ def manga(request):
         'manga_list': manga_list,
     }
     return render(request, 'manga/manga.html', context)
+
+
 
 
 class MangaDetailView(DetailView):
@@ -44,14 +47,19 @@ class TomDetailView(DetailView):
     slug_url_kwarg = 'tom_slug'
     context_object_name = 'tom'
 
-    def get_queryset(self):
-        return super().get_queryset().select_related('manga')
+    def get_object(self, queryset=None):
+        # Получаем том по связям manga_slug + tom_slug
+        return get_object_or_404(
+            Tom,
+            slug=self.kwargs['tom_slug'],
+            manga__slug=self.kwargs['manga_slug']
+        )
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context.update({
-            'manga': self.object.manga,
-            'capitels': self.object.capitels.order_by('captel_number')
+            'manga': self.object.manga,  # автоматически доступно через ForeignKey
+            'capitels': self.object.capitels.all().order_by('captel_number')
         })
         return context
 
@@ -65,17 +73,33 @@ class CapitelDetailView(DetailView):
     slug_url_kwarg = 'capitel_slug'
     context_object_name = 'capitel'
 
+    paginate_by = 1
+
+    def get_object(self, queryset=None):
+        return get_object_or_404(
+            Capitel,
+            slug=self.kwargs['capitel_slug'],
+            tom__slug=self.kwargs['tom_slug'],
+            tom__manga__slug=self.kwargs['manga_slug']
+        )
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['pages'] = self.object.pages.all().order_by('page_number')
+        # context['pages'] = self.object.pages.all().order_by('page_number')
+        page_list = self.object.pages.all().order_by('page_number')
+        paginator = Paginator(page_list, self.paginate_by)
+        page_number = self.request.GET.get('page')
+        page_obj = paginator.get_page(page_number)
 
-        # Получаем все главы манги
-        all_capitels = self.object.manga_set.first().capitel_set.all()
+        context.update({
+            'manga': self.object.tom.manga,
+            'tom': self.object.tom,
+            'page_obj': page_obj,
 
-        current_index = list(all_capitels).index(self.object)
-
-        context['pages'] = self.object.pages.all().order_by('page_number')
-        context['previous_chapter'] = all_capitels[current_index - 1] if current_index > 0 else None
-        context['next_chapter'] = all_capitels[current_index + 1] if current_index < len(all_capitels) - 1 else None
+            'paginator': paginator,
+            'is_paginated': page_obj.has_other_pages()
+        })
         return context
 
+    def get_queryset(self):
+        return super().get_queryset().prefetch_related('pages')

@@ -67,8 +67,12 @@ class Capitel(models.Model):
         verbose_name='Том'
     )
 
+    # def get_pages(self):
+    #     return self.pages.all().order_by('page_number')
+
     def __str__(self):
         return self.name
+
 
 
 class Page(models.Model):

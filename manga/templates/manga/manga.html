@@ -2,12 +2,26 @@
 {% load static %}
 
 {% block content %}
-    {% for manga in manga_list %}
-        <h2><a href="{% url 'manga:manga_detail_view' manga.slug %}">{{ manga.name }}</a></h2>
-        <img src="{{ manga.image_poster.url }}" alt="{{ manga.name }}">
-        <p>Описание: {{ manga.description }}</p>
-        <p>Genre: {{ manga.study }}</p>
-        <p>Year: {{ manga.release_date }}</p>
-        <hr>
-    {% endfor %}
+<div class="manga-list-container">
+    <h1 class="manga-list-title">Манга</h1>
+
+    <div class="manga-grid">
+        {% for manga in manga_list %}
+        <div class="manga-card">
+            <a href="{% url 'manga:manga_detail_view' manga.slug %}" class="manga-link">
+                <div class="manga-poster-container">
+                    <img src="{{ manga.image_poster.url }}" alt="{{ manga.name }}" class="manga-poster">
+                    <div class="manga-year">{{ manga.release_date|date:"Y" }}</div>
+                </div>
+                <div class="manga-info">
+                    <h2 class="manga-name">{{ manga.name }}</h2>
+                    <div class="manga-genre">{{ manga.study }}</div>
+                    <p class="manga-description">{{ manga.description|truncatechars:150 }}</p>
+                    <div class="read-more">Подробнее →</div>
+                </div>
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+</div>
 {% endblock %}

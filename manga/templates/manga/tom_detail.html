@@ -2,9 +2,25 @@
 {% load static %}
 
 {% block content %}
-    <h2>{{ tom.name }} : {{ tom.tom_number }} Том</h2>
-    {% for capitel in capitels %}
-        <p><a href="{% url 'manga:capitel_detail' manga.slug tom.slug capitel.slug %}">{{ capitel.name }}</a></p>
-    {% endfor %}
+<div class="tom-container">
+    <div class="tom-header">
+        <h1 class="tom-title">{{ tom.name }} <span class="tom-number">Том {{ tom.tom_number }}</span></h1>
+        <a href="{% url 'manga:manga_detail_view' manga.slug %}" class="back-link">← Назад к манге</a>
+    </div>
 
+    <div class="capitels-list">
+        <h2 class="capitels-title">Главы</h2>
+        <div class="capitels-grid">
+            {% for capitel in capitels %}
+            <a href="{% url 'manga:capitel_detail' manga.slug tom.slug capitel.slug %}" class="capitel-card">
+                <div class="capitel-name">{{ capitel.name }}</div>
+                <div class="capitel-meta">
+                    <span class="capitel-date">{{ capitel.created_at|date:"d.m.Y" }}</span>
+                    <span class="capitel-pages">{{ capitel.pages.count }} стр.</span>
+                </div>
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+</div>
 {% endblock %}

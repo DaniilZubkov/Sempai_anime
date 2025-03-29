@@ -3,20 +3,48 @@
 
 
 {% block content %}
-<div class="manga-container">
-    <h1>{{ manga.name }}</h1>
-    <img src="{{ manga.image_poster.url }}" alt="{{ manga.name }}" width="200">
+<div class="manga-detail-container">
+    <div class="manga-header">
+        <div class="manga-poster-container">
+            <img src="{{ manga.image_poster.url }}" alt="{{ manga.name }}" class="manga-poster">
+            <div class="manga-age-limit">{{ manga.age_limit }}</div>
+        </div>
 
-    <div class="chapters-list">
-        <h2>Главы:</h2>
-{#        {% for capitel in all_capitels %}#}
-{#            <p><a href="{% url 'manga:capitel_detail' manga_slug=manga.slug capitel_slug=capitel.slug %}">{{ capitel.captel_number }}</a></p>#}
-{#        {% endfor %}#}
+        <div class="manga-info">
+            <h1 class="manga-title">{{ manga.name }}</h1>
 
-        <h2>Томы:</h2>
-        {% for tom in toms %}
-            <p><a href="{% url 'manga:tom_detail' manga_slug=manga.slug tom_slug=tom.slug %}">{{ tom.tom_number }}</a></p>
-        {% endfor %}
+            <div class="manga-meta">
+                <div class="meta-item">
+                    <span class="meta-label">Студия:</span>
+                    <span class="meta-value">{{ manga.study }}</span>
+                </div>
+                <div class="meta-item">
+                    <span class="meta-label">Год выхода:</span>
+                    <span class="meta-value">{{ manga.release_date }}</span>
+                </div>
+                <div class="meta-item">
+                    <span class="meta-label">Жанр:</span>
+                    <span class="meta-value">{{ manga.genre }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="manga-description">
+        <h2 class="section-title">Описание</h2>
+        <p>{{ manga.description }}</p>
+    </div>
+
+    <div class="toms-section">
+        <h2 class="section-title">Томы</h2>
+        <div class="toms-grid">
+            {% for tom in toms %}
+            <a href="{% url 'manga:tom_detail' manga_slug=manga.slug tom_slug=tom.slug %}" class="tom-card">
+                <div class="tom-number">Том {{ tom.name }} - {{ tom.tom_number }}</div>
+                <div class="tom-date">{{ tom.created_at|date:"d.m.Y" }}</div>
+            </a>
+            {% endfor %}
+        </div>
     </div>
 </div>
 {% endblock %}

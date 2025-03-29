@@ -31,8 +31,6 @@ class Manga(models.Model):
     age_limit = models.CharField(max_length=100, blank=True, verbose_name='Возрастное ограничение', null=True)
     study = models.ForeignKey(to=Study, on_delete=models.CASCADE, verbose_name='Студия создатель')
     description = models.TextField(verbose_name='Описание', blank=True, null=True)
-    # tom = models.ForeignKey(to=Tom, on_delete=models.CASCADE, verbose_name='Том', related_name='toms')
-    # captel = models.ForeignKey(to=Capitel, on_delete=models.CASCADE, verbose_name='Глава', related_name='capitels')
 
     def __str__(self):
         return self.name

@@ -37,6 +37,7 @@ class MangaDetailView(DetailView):
 
         context['all_capitels'] = all_capitels
         context['toms'] = toms
+        context['titile'] = 'Sempai Anime'
         return context
 
 
@@ -59,7 +60,9 @@ class TomDetailView(DetailView):
         context = super().get_context_data(**kwargs)
         context.update({
             'manga': self.object.manga,  # автоматически доступно через ForeignKey
-            'capitels': self.object.capitels.all().order_by('captel_number')
+            'capitels': self.object.capitels.all().order_by('captel_number'),
+
+            'titile': 'Sempai Anime',
         })
         return context
 
@@ -97,7 +100,9 @@ class CapitelDetailView(DetailView):
             'page_obj': page_obj,
 
             'paginator': paginator,
-            'is_paginated': page_obj.has_other_pages()
+            'is_paginated': page_obj.has_other_pages(),
+
+            'titile': 'Sempai Anime'
         })
         return context
 

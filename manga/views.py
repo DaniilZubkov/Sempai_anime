@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.core.files.storage import FileSystemStorage
 import os
-from django.views.generic import CreateView, DetailView
+from django.views.generic import CreateView, DetailView, ListView
 from django.core.paginator import Paginator
 from .models import Manga, Capitel, Tom
 
@@ -16,6 +16,14 @@ def manga(request):
     return render(request, 'manga/manga.html', context)
 
 
+
+class MangaListView(ListView):
+    model = Manga
+    context_object_name = 'manga'
+    template_name = 'manga/manga.html'
+
+    def get_queryset(self):
+        return Manga.objects.all()
 
 
 class MangaDetailView(DetailView):

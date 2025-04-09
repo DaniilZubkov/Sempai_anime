@@ -38,9 +38,10 @@ class Anime(models.Model):
     lang = models.CharField(max_length=100, blank=True, verbose_name='Длительность серии', null=True)
 
 
-
     def __str__(self):
         return self.name
+
+
 
 
 

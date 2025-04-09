@@ -1,11 +1,11 @@
 from django.urls import path
-from .views import anime, single_anime_detail
+from .views import anime, SingleAnimeDetail
 
 app_name = 'animes'
 
 urlpatterns = [
     path('', anime, name='anime'),
-    path('<slug:anime_slug>/', single_anime_detail, name='anime_show'),
-    # path('<slug:anime_slug>/<int:episode_numer>/', single_anime_detail, name='anime_episode')
-    path('<slug:anime_slug>/<int:page>/', single_anime_detail, name='anime_episode'),
+    path('<slug:anime_slug>/', SingleAnimeDetail.as_view(), name='anime_show'),  # для главной страницы аниме
+    path('<slug:anime_slug>/<slug:episode_slug>/', SingleAnimeDetail.as_view(), name='anime_episode'),  # по slug эпизода
+    path('<slug:anime_slug>/<int:pk>/', SingleAnimeDetail.as_view(), name='anime_episode_by_number'),  # по номеру эпизода
 ]

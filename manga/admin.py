@@ -21,6 +21,7 @@ class PageInline(admin.TabularInline):
     model = Page
     extra = 10  # Количество форм для добавления страниц по умолчанию
 
+
 @admin.register(Capitel)
 class CapitelAdmin(admin.ModelAdmin):
     inlines = [PageInline]

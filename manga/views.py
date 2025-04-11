@@ -7,14 +7,6 @@ from .models import Manga, Capitel, Tom
 
 
 
-def manga(request):
-    manga_list = Manga.objects.all()
-    context = {
-        'titile': 'Sempai Anime',
-        'manga_list': manga_list,
-    }
-    return render(request, 'manga/manga.html', context)
-
 
 
 class MangaListView(ListView):
@@ -22,8 +14,15 @@ class MangaListView(ListView):
     context_object_name = 'manga'
     template_name = 'manga/manga.html'
 
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['titile'] = 'Sempai Anime'
+        return context
+
     def get_queryset(self):
         return Manga.objects.all()
+
+
 
 
 class MangaDetailView(DetailView):

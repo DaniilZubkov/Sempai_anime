@@ -1,23 +1,27 @@
 from django.shortcuts import render, get_object_or_404, redirect, get_list_or_404
 from .models import AnimeTitle, Anime
-from django.views.generic import DetailView
+from django.views.generic import DetailView, ListView
 from django.core.paginator import Paginator
 from django.template.loader import render_to_string
 from django.http import JsonResponse
 
 import random
 from django.core.cache import cache
-
-def anime(request):
-    anime_titles = Anime.objects.all()
-
-    context = {
-        'titile': 'Sempai Anime',
-        'anime_titles': anime_titles
-    }
-    return render(request, 'animes/anime.html', context)
+from django.views.decorators.cache import cache_page
+from django.utils.decorators import method_decorator
 
 
+
+class AnimeList(ListView):
+    model = Anime
+    template_name = 'animes/anime.html'
+    context_object_name = 'anime_titiles'
+    queryset = Anime.objects.all()
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['titile'] = 'Sempai Anime'
+        return context
 
 
 
@@ -110,9 +114,24 @@ class SingleAnimeDetail(DetailView):
 
 
 
-def random_anime(request):
-    random_anime = cache.get('random_anime')
-    if not random_anime:
-        random_anime = Anime.objects.order_by('?').first()
-        cache.set('random_anime', random_anime, 300)  # Кэш на 5 минут
-    return {'random_anime': random_anime}
+# def random_anime(request):
+#     random_anime = cache.get('random_anime')
+#     if not random_anime:
+#         random_anime = Anime.objects.order_by('?').first()
+#         cache.set('random_anime', random_anime, 300)  # Кэш на 5 минут
+#     return {'random_anime': random_anime}
+
+
+
+class RandomAnimeView(DetailView):
+    model = Anime
+    template_name = 'animes/single_anime_title.html'
+
+    @method_decorator(cache_page(300))  # Кэшируем всю страницу на 5 минут
+    def dispatch(self, *args, **kwargs):
+        return super().dispatch(*args, **kwargs)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['random_anime'] = Anime.objects.order_by('?').first()
+        return context

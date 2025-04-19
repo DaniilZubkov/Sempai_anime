@@ -6,17 +6,17 @@
     <h1 class="manga-list-title">Манга</h1>
 
     <div class="manga-grid">
-        {% for manga in manga_list %}
+        {% for manga_obj in manga %}
         <div class="manga-card">
-            <a href="{% url 'manga:manga_detail_view' manga.slug %}" class="manga-link">
+            <a href="{% url 'manga:manga_detail_view' manga_obj.slug %}" class="manga-link">
                 <div class="manga-poster-container">
-                    <img src="{{ manga.image_poster.url }}" alt="{{ manga.name }}" class="manga-poster">
-                    <div class="manga-year">{{ manga.release_date|date:"Y" }}</div>
+                    <img src="{{ manga_obj.image_poster.url }}" alt="{{ manga_obj.name }}" class="manga-poster">
+                    <div class="manga-year">{{ manga_obj.release_date|date:"Y" }}</div>
                 </div>
                 <div class="manga-info">
-                    <h2 class="manga-name">{{ manga.name }}</h2>
-                    <div class="manga-genre">{{ manga.study }}</div>
-                    <p class="manga-description">{{ manga.description|truncatechars:150 }}</p>
+                    <h2 class="manga-name">{{ manga_obj.name }}</h2>
+                    <div class="manga-genre">{{ manga_obj.study }}</div>
+                    <p class="manga-description">{{ manga_obj.description|truncatechars:150 }}</p>
                     <div class="read-more">Подробнее →</div>
                 </div>
             </a>

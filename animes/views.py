@@ -114,13 +114,6 @@ class SingleAnimeDetail(DetailView):
 
 
 
-# def random_anime(request):
-#     random_anime = cache.get('random_anime')
-#     if not random_anime:
-#         random_anime = Anime.objects.order_by('?').first()
-#         cache.set('random_anime', random_anime, 300)  # Кэш на 5 минут
-#     return {'random_anime': random_anime}
-
 
 
 class RandomAnimeView(DetailView):

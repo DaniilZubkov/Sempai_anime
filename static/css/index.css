@@ -200,7 +200,7 @@ main {
         font-family: 'Arial', sans-serif;
     }
 
-    .show_video_dark h1 {
+.show_video_dark h1 {
         font-size: 28px;
         margin-bottom: 25px;
         color: #ffffff;
@@ -208,7 +208,7 @@ main {
         text-transform: uppercase;
     }
 
-    .video-container {
+.video-container {
         margin-bottom: 30px;
         background-color: #2a2a2a;
         padding: 20px;
@@ -216,7 +216,7 @@ main {
         box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
     }
 
-    .show_video_dark video {
+.show_video_dark video {
         width: 100%;
         max-width: 981px !important;
         max-height: 551px;
@@ -227,36 +227,36 @@ main {
         margin: 0 auto;
     }
 
-    .episode-info {
+.episode-info {
         margin-top: 15px;
     }
 
-    .episode-name, .episode-date {
+.episode-name, .episode-date {
         font-size: 18px;
         color: #ffffff;
         margin-bottom: 5px;
     }
 
-    .episode-name {
+.episode-name {
         font-weight: bold;
     }
 
-    .episode-date {
+.episode-date {
         color: #b3b3b3;
     }
 
     /* Стили для пагинации */
-    .pagination {
+.pagination {
         margin-top: 40px;
         display: flex;
         justify-content: center;
     }
 
-    .pagination .page-item {
+.pagination .page-item {
         margin: 0 5px;
     }
 
-    .pagination .page-link {
+.pagination .page-link {
         color: #ffffff;
         background-color: #333;
         border: 1px solid #444;
@@ -266,20 +266,20 @@ main {
         font-size: 16px;
     }
 
-    .pagination .page-link:hover {
+.pagination .page-link:hover {
         background-color: #ffffff;
         color: #1a1a1a;
         border-color: #ffffff;
         transform: translateY(-2px);
     }
 
-    .pagination .page-item.disabled .page-link {
+.pagination .page-item.disabled .page-link {
         color: #666;
         background-color: #333;
         border-color: #444;
     }
 
-    .pagination .page-item.active .page-link {
+.pagination .page-item.active .page-link {
         background-color: #ffffff;
         color: #1a1a1a;
         border-color: #ffffff;
@@ -287,7 +287,7 @@ main {
     }
 
     /* Тень для пагинации */
-    .custom-shadow {
+.custom-shadow {
         box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
         border-radius: 15px;
         padding: 15px;
@@ -295,7 +295,7 @@ main {
     }
 
     /* Адаптивные стили */
-    @media (max-width: 981px) {
+@media (max-width: 981px) {
         .show_video_dark h1 {
             font-size: 24px;
         }
@@ -314,7 +314,7 @@ main {
         }
     }
 
-    @media (max-width: 981px) {
+@media (max-width: 981px) {
         .show_video_dark h1 {
             font-size: 20px;
         }
@@ -326,7 +326,7 @@ main {
     }
 
 /* Season Anime */
-    .anime-season-container {
+.anime-season-container {
         display: flex;
         flex-wrap: wrap;
         gap: 20px;
@@ -334,7 +334,7 @@ main {
         padding: 0 20px;
     }
 
-    .anime-card {
+.anime-card {
         background-color: #2a2a2a;
         border-radius: 10px;
         overflow: hidden;
@@ -343,29 +343,29 @@ main {
         transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
-    .anime-card:hover {
+.anime-card:hover {
         transform: translateY(-5px);
         box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
     }
 
-    .anime-image {
+.anime-image {
         width: 100%;
         height: 250px;
         overflow: hidden;
     }
 
-    .anime-image img {
+.anime-image img {
         width: 100%;
         height: 100%;
         object-fit: cover;
         transition: transform 0.3s ease;
     }
 
-    .anime-card:hover .anime-image img {
+.anime-card:hover .anime-image img {
         transform: scale(1.1);
     }
 
-    .anime-name {
+.anime-name {
         font-size: 16px;
         color: #ffffff;
         margin: 15px 0;
@@ -374,7 +374,7 @@ main {
     }
 
     /* Адаптивные стили */
-    @media (max-width: 768px) {
+@media (max-width: 768px) {
         .title_top {
             font-size: 24px;
         }
@@ -1049,5 +1049,144 @@ main {
 
         .capitel-card {
             padding: 15px;
+        }
+    }
+
+
+/* USERS */
+.registration-form {
+        max-width: 800px;
+        margin: 40px auto;
+        padding: 40px;
+        background: #fff;
+        border-radius: 12px;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+    }
+
+.registration-form h2 {
+        font-size: 2.2rem;
+        color: #333;
+        margin-bottom: 35px;
+        text-align: center;
+        position: relative;
+        padding-bottom: 15px;
+    }
+
+.registration-form h2::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 60px;
+        height: 3px;
+        background: #ff4757;
+    }
+
+.registration-form .form-label {
+        font-weight: 600;
+        color: #444;
+        margin-bottom: 8px;
+        font-size: 0.95rem;
+    }
+
+.registration-form .form-control {
+        border: 2px solid #e0e0e0;
+        border-radius: 8px;
+        padding: 12px 15px;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+    }
+
+.registration-form .form-control:focus {
+        border-color: #ff4757;
+        box-shadow: 0 0 0 3px rgba(255, 71, 87, 0.15);
+    }
+
+.alert.alert-danger {
+        margin-top: 8px;
+        padding: 10px 15px;
+        border-radius: 6px;
+        font-size: 0.9rem;
+        border: 1px solid #ff6b6b;
+        background: #ffeaea;
+        color: #d32f2f;
+    }
+
+.checkbox-group {
+        margin: 25px 0 30px;
+        display: flex;
+        align-items: center;
+    }
+
+.checkbox-group input[type="checkbox"] {
+        width: 18px;
+        height: 18px;
+        margin-right: 10px;
+        accent-color: #ff4757;
+        cursor: pointer;
+    }
+
+.checkbox-group label {
+        color: #555;
+        font-size: 0.95rem;
+        cursor: pointer;
+    }
+
+.registration-form button[type="submit"] {
+        width: 100%;
+        padding: 14px;
+        background: #ff4757;
+        color: #fff;
+        border: none;
+        border-radius: 8px;
+        font-size: 1.1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+.registration-form button[type="submit"]:hover {
+        background: #ff3344;
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(255, 71, 87, 0.3);
+    }
+
+    /* Адаптивность */
+    @media (max-width: 768px) {
+        .registration-form {
+            padding: 30px;
+            margin: 20px;
+        }
+
+        .registration-form h2 {
+            font-size: 1.8rem;
+        }
+
+        .row {
+            flex-direction: column;
+        }
+
+        .col-md-6 {
+            width: 100%;
+            max-width: none;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .registration-form {
+            padding: 25px 20px;
+        }
+
+        .registration-form h2 {
+            font-size: 1.6rem;
+            padding-bottom: 10px;
+        }
+
+        .registration-form button[type="submit"] {
+            font-size: 1rem;
+            padding: 12px;
         }
     }

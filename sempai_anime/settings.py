@@ -28,6 +28,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -41,6 +42,7 @@ INSTALLED_APPS = [
     'app',
     'animes',
     'manga',
+    'users',
 
     'storages'
 ]
@@ -129,6 +131,7 @@ STATICFILES_DIRS = [
     BASE_DIR / 'app/../static',
 ]
 
+
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')  # Папка для хранения файлов
 MEDIA_URL = '/media/'  # URL для доступа к медиафайлам
 
@@ -136,3 +139,7 @@ MEDIA_URL = '/media/'  # URL для доступа к медиафайлам
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+AUTH_USER_MODEL = 'users.User'
+LOGIN_URL = '/user/login/'
+LOGIN_REDIRECT_URL = '/'
+

@@ -12,36 +12,60 @@ from django.views.generic import CreateView, TemplateView, UpdateView
 from users.forms import ProfileForm, UserLoginForm, UserRegistrationForm
 
 
-class UserLoginView(LoginView):
-    template_name = 'users/user_ligin.html'
-    form_class = UserLoginForm
+# class UserLoginView(LoginView):
+#     template_name = 'users/user_ligin.html'
+#     form_class = UserLoginForm
+#     redirect_authenticated_user = True
+#
+#     # success_url = reverse_lazy('sempai:index')
+#
+#     def get_success_url(self):
+#         redirect_page = self.request.POST.get('next', None)
+#         if redirect_page and redirect_page != reverse('users:user_logout'):
+#             return redirect_page
+#         return reverse_lazy('sempai:index')
+#
+#     def form_valid(self, form):
+#         session_key = self.request.session.session_key
+#
+#         user = form.get_user()
+#
+#         if user:
+#             auth.login(self.request, user)
+#             if session_key:
+#
+#                 messages.success(self.request, f"{user.username}, Вы вошли в аккаунт")
+#
+#                 return HttpResponseRedirect(self.get_success_url())
+#
+#
+#     def get_context_data(self, **kwargs):
+#         context = super().get_context_data(**kwargs)
+#         context['titile'] = 'Sempai Anime - Авторизация'
+#         return context
 
-    # success_url = reverse_lazy('sempai:index')
+
+class UserLoginView(LoginView):
+    template_name = 'users/user_ligin.html'  # Исправлено
+    form_class = UserLoginForm
+    redirect_authenticated_user = True
 
     def get_success_url(self):
-        redirect_page = self.request.POST.get('next', None)
-        if redirect_page and redirect_page != reverse('users:logout'):
+        redirect_page = self.request.GET.get('next', None)  # Исправлено GET вместо POST
+        if redirect_page and redirect_page != reverse('users:user_logout'):
             return redirect_page
         return reverse_lazy('sempai:index')
 
     def form_valid(self, form):
-        session_key = self.request.session.session_key
-
-        user = form.get_user()
-
-        if user:
-            auth.login(self.request, user)
-            if session_key:
-
-                messages.success(self.request, f"{user.username}, Вы вошли в аккаунт")
-
-                return HttpResponseRedirect(self.get_success_url())
-
+        # Убрана избыточная логика
+        messages.success(self.request, f"{form.get_user().username}, Вы вошли в аккаунт")
+        return super().form_valid(form)
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['titile'] = 'Sempai Anime - Авторизация'
+        context['titile'] = 'Sempai Anime - Авторизация'  # Исправлено
         return context
+
 
 
 class UserRegistrationView(CreateView):

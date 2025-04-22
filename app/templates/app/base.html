@@ -14,8 +14,13 @@
                 <li class="nav_item"><a href="{% url 'manga:read_manga' %}">Манга</a></li>
                 <li class="nav_item"><a href="{% url 'animes:anime_show' random_anime.slug %}">Случайное аниме</a></li>
                 <li class="nav_item"><a href="{% url 'sempai:index' %}">Главная</a></li>
-                <li class="nav_item"><a href="{% url 'user:user_login' %}">Войти</a></li>
-                <li class="nav_item"><a href="{% url 'user:user_register' %}">Регистрация</a></li>
+                {% if not user.is_authenticated %}
+                    <li class="nav_item"><a href="{% url 'user:user_register' %}">Регистрация</a></li>
+                    <li class="nav_item"><a href="{% url 'user:user_login' %}">Войти</a></li>
+                {% else %}
+                    <li class="nav_item"><a href="{% url 'user:user_profile' %}">Профиль</a></li>
+                    <li class="nav_item"><a href="{% url 'user:user_logout' %}">Выйти</a></li>
+                {% endif %}
             </ul>
         </nav>
     </header>
